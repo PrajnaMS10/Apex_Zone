@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEXZONE</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">A<span>Z</span></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="/login">Login</a>
+            <span class="active-nav"></span>
+        </nav>
+    </header>
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>Welcome to</h1>
+            <div class="text-animate">
+                <h3><span>APEXZONE</span></h3>
+            </div>
+            <p>The Fitness Planner</p>
+            <div class="btn-box">
+                <a href="/login" class="btn">LOGIN</a>
+                <a href="#about" class="btn">INFO</a>
+            </div>
+        </div>
+        <div class="home-sci">
+            <a href="https://www.facebook.com/"><i class='bx bxl-facebook' target="_blank" ></i></a>
+            <a href="http://www.youtube.com/@abhaychougala" target="_blank"><i class='bx bxl-youtube' ></i></a>
+            <a href="https://www.instagram.com/abhay.chougala/" target="_blank"><i class='bx bxl-instagram-alt' ></i></a>
+            <a href="https://mail.google.com/mail/u/0/#drafts?compose=new" target="_blank"><i class='bx bxl-gmail'></i></a>
+        </div>
+        <div class="home-imghover"></div>
+    </section>
+        <section class="about" id="about">
+            <h2 class="heading">About <span>Us</span></h2>
+
+            <div class="about-img">
+                <img src="{{ url_for('static', filename='img2.jpg') }}" alt="">
+                <span class="circle-spin"></span>
+            </div>
+            <div class="about-content">
+                <h3>Fitness Planner</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, officiis dolorem. Nulla deserunt molestiae temporibus eligendi adipisci nam sed provident hic ipsa! Illo placeat illum inventore architecto. Distinctio, modi dignissimos!</p>
+                <div class="btn-box btns">
+                    <a href="#education" class="btn">Know More</a>
+                </div>      
+            </div>
+        </section>
+        <section class="apexzone" id="apexzone">
+            <h2 class="heading">APEX<span>ZONE</span></h2>
+    
+            <div class="apexzone-row">
+                <div class="apexzone-column">
+                    <h3 class="title">Fitness</h3>
+                    <div class="apexzone-box">
+                        <div class="apexzone-content">
+                            <div class="content">
+                                <h3>Exercises</h3>
+                                <p>
+                                    Exercise encompasses a variety of activities designed to improve health and fitness. Aerobic exercises like running and swimming boost cardiovascular health and endurance, while strength training with weights enhances muscle mass and strength. 
+                                </p>
+                            </div>
+                        </div>
+    
+                        <div class="apexzone-content">
+                            <div class="content">
+                                <h3>Schedule</h3>
+                                <p>Daily workout for 2hrs with warmups and cooldowns.</p>
+                                <p>One day for recovery</p>
+                                <p>BMI based dietary control</p>
+                            </div>
+                        </div>
+    
+                        <div class="apexzone-content">
+                            <div class="content">
+                                
+                                <h3>Guidelines</h3>
+                                <p>Enter the required details as accurate as possible (BMI) </p>
+                                <p>Based on the results from the BMI , the user will be provided with workout and diet schedule </p>
+                                <p>User can access information regarding the necessary excercises and can update his/her progress </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="apexzone-column">
+                    <h3 class="title"> Diet </h3>
+                    <div class="apexzone-box">
+                        <div class="apexzone-content">
+                            <div class="content">
+                            
+                                <h3>BMI</h3>
+                                <p>A BMI (Body Mass Index) calculator works by using a person's weight and height to determine their body mass index, which is a measure of body fat. By inputting these values, the calculator provides a BMI number, which categorizes the individual into underweight, normal weight, overweight, or obese.This simple tool helps assess whether a person has a healthy body weight for their height.</p>
+                            </div>
+                        </div>
+    
+                        <div class="apexzone-content">
+                            <div class="content">
+                                <h3>Fitness Phase</h3>
+                               <p>Based on BMI the user can opt for:</p>
+                               <p><ul>
+                                <li><b>CUT</b></li>
+                                <li><b>BULK</b></li>
+                            </ul></p>
+                            </div>
+                        </div>
+    
+                        <div class="apexzone-content">
+                            <div class="content">
+                                <h3>Food</h3>
+                                <p> On thorough research, the website provides the users, a nutritious and safe diet.</p>
+                                <p>The food and dietary control is trusted and provided as per information given from experts and dieticians</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span> Us</span></h2>
+
+        <form action="form.html" target="_blank">
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="text" placeholder="Full Name" required>
+                    <span class="focus"></span>
+
+                </div>
+                <div class="input-field">
+                    <input type="text" placeholder="Email Address" required>
+                    <span class="focus"></span>
+                </div>
+            </div>
+            
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="number" min='100000000' max='9999999999'placeholder="Mobile Number" required>
+                    <span class="focus"></span>
+
+                </div>
+                <div class="input-field">
+                    <input type="text" placeholder="Email Subject" required>
+                    <span class="focus"></span>
+                </div>
+            </div>
+
+            <div class="textarea-field">
+                <textarea name="" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
+                <span class="focus"></span>
+            </div>
+            <div class="btn-box btns">
+                <button type="submit"class='btn'>Submit</button>
+            </div>
+        </form>
+
+    </section>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <div>
+                <p>Contact No:<span>6361585885</span></p>
+            </div>
+            <div>
+                <p>Mail Address:<span>apexzone@gmail.com</span></p>
+            </div>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

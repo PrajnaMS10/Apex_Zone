@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chest and Arms Exercises</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles-ee.css') }}">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 5rem;
+            text-align: center;
+        }
+
+        .exercise-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .exercise {
+            background-color: rgb(75, 3, 3);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+
+        .exercise h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise .gif-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise .gif-container img {
+            display: block;
+            width: 50%;
+            max-width: 100%;
+            border-radius: 1rem;
+        }
+
+        .exercise p {
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .exercise ol {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .exercise ul {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .exercise ol li {
+            margin-bottom: 2rem;
+        }
+
+        .exercise ol,
+        .exercise ul {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .exercise li {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise .btn {
+    background-color: rgb(188, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 1rem 3rem;
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.exercise .btn:hover {
+    background-color: transparent;
+    color: rgb(188, 0, 0);
+    border: 2px solid rgb(188, 0, 0); /* Add a red border on hover */
+}
+
+        @media (max-width: 768px) {
+            .exercise .gif-container {
+                flex-direction: column;
+            }
+
+            .exercise .gif-container img {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">A<span>Z</span></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('exercise') }}">Exercise</a>
+            <a href="{{ url_for('diet') }}">Diet</a>
+            <a href="{{ url_for('display_tables') }}">Personal Record</a>
+            <span class="active-nav"></span>
+        </nav>
+    </header>
+    <main>
+        <section class="exercise-section">
+            <h1>Chest and Arms Exercises</h1>
+
+            <div class="exercise">
+                <h2>Bench Press</h2>
+                <p><strong>ID:</strong> 6</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='BenchPress.gif') }}" alt="Push-Ups" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='BenchPress1.gif') }}" alt="Dips" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Pectorals, deltoids, triceps.</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Lie flat on a bench with your feet flat on the ground.</li>
+                    <li>Grip the barbell with your hands slightly wider than shoulder-width apart.</li>
+                    <li>Unrack the bar and lower it slowly to your chest, just below the nipples.</li>
+                    <li>Push the bar back up until your arms are fully extended.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Keep your back flat and maintain a natural arch.</li>
+                    <li>Do not bounce the bar off your chest.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(6, 'Bench Press')">Update PR</button>
+            </div>
+
+            <div class="exercise">
+                <h2>Incline Dumbbell Press</h2>
+                <p><strong>ID:</strong> 7</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='InclinedDumbbellPress.gif') }}" alt="Push-Ups" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='InclinedDumbbellPress1.gif') }}" alt="Dips" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Upper pectorals, deltoids, triceps.</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Set an incline bench to about 30-45 degrees.</li>
+                    <li>Sit on the bench and hold a dumbbell in each hand, resting on your thighs.</li>
+                    <li>Lie back and press the dumbbells above your chest with your palms facing forward.</li>
+                    <li>Lower the dumbbells slowly to the sides of your chest.</li>
+                    <li>Press the dumbbells back up to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Keep your elbows slightly bent to avoid overextending your shoulder joints.</li>
+                    <li>Focus on a controlled movement, avoiding momentum.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(7, 'Incline Dumbbell Press')">Update PR</button>
+            </div>
+
+            <div class="exercise">
+                <h2>Chest Flyes</h2>
+                <p><strong>ID:</strong> 8</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='ChestFlys.gif') }}" alt="Push-Ups" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='ChestFlys1.gif') }}" alt="Dips" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Pectorals, deltoids.</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Lie flat on a bench with a dumbbell in each hand, palms facing each other.</li>
+                    <li>Extend your arms above your chest, elbows slightly bent.</li>
+                    <li>Lower the dumbbells out to the sides in an arc, feeling the stretch in your chest.</li>
+                    <li>Bring the dumbbells back up to the starting position, squeezing your chest muscles.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Keep a slight bend in your elbows throughout the movement.</li>
+                    <li>Focus on using your chest muscles to move the weights, not your arms.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(8, 'Chest Flyes')">Update PR</button>
+            </div>
+
+            <div class="exercise">
+                <h2>Push-Ups or Dips</h2>
+                <p><strong>ID:</strong> 9</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='Pushups.gif') }}" alt="Push-Ups" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='TricepDips.gif') }}" alt="Dips" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Pectorals, deltoids, triceps.</p>
+                <p><strong>Push-Ups Instructions:</strong></p>
+                <ol>
+                    <li>Start in a plank position with your hands slightly wider than shoulder-width apart.</li>
+                    <li>Lower your body until your chest nearly touches the floor.</li>
+                    <li>Push yourself back up to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Dips Instructions:</strong></p>
+                <ol>
+                    <li>Position yourself between parallel bars and lift your body so your arms are straight.</li>
+                    <li>Lower your body by bending your elbows until your shoulders are below your elbows.</li>
+                    <li>Push yourself back up to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>For push-ups, keep your body in a straight line from head to heels.</li>
+                    <li>For dips, avoid swinging your body; use controlled movements.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(9, 'Push-Ups or Dips')">Update PR</button>
+            </div>
+
+            <div class="exercise">
+                <h2>Barbell Bicep Curls</h2>
+                <p><strong>ID:</strong> 10</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='BarbellCurl.gif') }}" alt="Push-Ups" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='BarbellCurl1.gif') }}" alt="Dips" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Biceps.</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Stand with your feet shoulder-width apart and hold a barbell with an underhand grip (palms facing up).</li>
+                    <li>Keep your elbows close to your torso and curl the barbell up to shoulder level.</li>
+                    <li>Slowly lower the barbell back to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Avoid swinging your body; use only your arms.</li>
+                    <li>Keep your elbows stationary and close to your body.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(10, 'Barbell Bicep Curls')">Update PR</button>
+            </div>
+
+            <div class="exercise tricepdips-section">
+                <h2>Tricep Dips or Tricep Pushdowns</h2>
+                <p><strong>ID:</strong> 11</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='Parabar.gif') }}" alt="Tricep Dips" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='Pushdown.gif') }}" alt="Tricep Pushdowns" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Triceps.</p>
+                <p><strong>Tricep Dips Instructions:</strong></p>
+                <ol>
+                    <li>Position yourself between parallel bars and lift your body so your arms are straight.</li>
+                    <li>Lower your body by bending your elbows until your shoulders are below your elbows.</li>
+                    <li>Push yourself back up to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tricep Pushdowns Instructions:</strong></p>
+                <ol>
+                    <li>Attach a rope or bar to a high pulley on a cable machine.</li>
+                    <li>Stand facing the machine and grab the attachment with an overhand grip.</li>
+                    <li>Keep your elbows close to your torso and push the attachment down until your arms are fully extended.</li>
+                    <li>Slowly return to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>For dips, keep your body upright to target the triceps more effectively.</li>
+                    <li>For pushdowns, avoid flaring your elbows out.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(11, 'Tricep Dips or Pushdowns')">Update PR</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function updatePR(exerciseID, exerciseName) {
+            // Redirect to the update page with parameters
+            window.location.href = `{{ url_for('update_pr') }}?id=${exerciseID}&name=${exerciseName}`;
+        }
+        //toggle icon navbar
+let menuIcon = document.querySelector('#menu-icon');
+let navbar= document.querySelector('.navbar');
+
+menuIcon.onclick= () => {
+    menuIcon.classList.toggle('bx-x');
+    navbar.classList.toggle('active');
+}
+// scroll sections
+let sections = document.querySelectorAll('sections');
+let navLinks = document.querySelectorAll('header nav a');
+
+window.onscroll = () => {
+    sections.forEach(sec => {
+        let top = window.scrollY;
+        let offset=sec.offsetTop=100;
+        let height=sec.offsetHeight;
+        let id=sec.getAttribute('');
+
+        if(top >= offset && top < offset + height) {
+            //active navbar links
+            navLinks.forEach(links => {
+                links.classList.remove('active');
+                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+            });
+        }
+    })
+}
+
+//scroll sections
+window.onscroll = () => {
+    //sticky header
+    let header = document.querySelector('header');
+    header.classList.toggle('sticky',window.scrollY > 100);
+
+    menuIcon.classList.remove('bx-x');
+    navbar.classList.remove('active');
+}
+
+
+ScrollReveal({
+    reset: true,
+    distance: '80px',
+    duration: 2000,
+    delay: 200
+});
+ScrollReveal().reveal('.home-content, .heading',{origin:'top'});
+ScrollReveal().reveal('.home-img img, .services-container, portfolio-box, .contact form', {origin: 'bottom'});
+ScrollReveal().reveal('.home-content h1, .about-img img',{origin:'left'});
+ScrollReveal().reveal('.home-content h3, .home-content p .about-content',{origin:'right'});
+    </script>
+</body>
+
+</html>

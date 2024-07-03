@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back and Glutes Exercises</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles-ee.css') }}">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 5rem;
+            text-align: center;
+        }
+
+        .exercise-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .exercise {
+            background-color: rgb(75, 3, 3);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+
+        .exercise h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise .gif-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise .gif-container img {
+            display: block;
+            width: 50%;
+            max-width: 100%;
+            border-radius: 1rem;
+        }
+
+        .exercise p {
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .exercise ol {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .exercise ul {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .exercise ol li {
+            margin-bottom: 2rem;
+        }
+
+        .exercise ol,
+        .exercise ul {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .exercise li {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise .btn {
+    background-color: rgb(188, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 1rem 3rem;
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.exercise .btn:hover {
+    background-color: transparent;
+    color: rgb(188, 0, 0);
+    border: 2px solid rgb(188, 0, 0); /* Add a red border on hover */
+}
+
+
+        @media (max-width: 768px) {
+            .exercise .gif-container {
+                flex-direction: column;
+            }
+
+            .exercise .gif-container img {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">A<span>Z</span></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('exercise') }}">Exercise</a>
+            <a href="{{ url_for('diet') }}">Diet</a>
+            <a href="{{ url_for('display_tables') }}">Personal Record</a>
+            <span class="active-nav"></span>
+        </nav>
+    </header>
+    <main>
+        <section class="exercise-section">
+            <h1>Back and Glutes Exercises</h1>
+
+            <div class="exercise">
+                <h2>Deadlifts</h2>
+                <p><strong>ID:</strong> 12</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='Deadlifts.gif') }}" alt="Deadlifts" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='Deadlifts1.gif') }}" alt="Deadlifts" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Lower back, glutes, hamstrings, quads, traps.</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Stand with your feet hip-width apart, toes under the barbell.</li>
+                    <li>Bend at your hips and knees to grip the barbell with your hands shoulder-width apart.</li>
+                    <li>Keep your back straight and engage your core.</li>
+                    <li>Push through your heels to lift the barbell off the ground, extending your hips and knees.</li>
+                    <li>Stand up straight with the barbell in front of your thighs.</li>
+                    <li>Lower the barbell back to the ground in a controlled manner.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Keep the barbell close to your body throughout the lift.</li>
+                    <li>Avoid rounding your back.</li>
+                    <li>Maintain a neutral spine and engage your core.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(12, 'Deadlifts')">Update PR</button>
+            </div>
+
+            <div class="exercise pullups-section">
+                <h2>Pull-Ups or Lat Pulldowns</h2>
+                <p><strong>ID:</strong> 13</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='Pullups.gif') }}" alt="Pull-Ups" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='LatPulldowns.gif') }}" alt="Lat Pulldowns" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Latissimus dorsi, biceps, traps, rhomboids.</p>
+                <p><strong>Pull-Ups Instructions:</strong></p>
+                <ol>
+                    <li>Grab a pull-up bar with an overhand grip, hands slightly wider than shoulder-width apart.</li>
+                    <li>Hang with your arms fully extended.</li>
+                    <li>Pull your body up until your chin is above the bar.</li>
+                    <li>Lower yourself back to the starting position in a controlled manner.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Lat Pulldowns Instructions:</strong></p>
+                <ol>
+                    <li>Sit at a lat pulldown machine and adjust the thigh pad to secure your legs.</li>
+                    <li>Grab the bar with a wide overhand grip.</li>
+                    <li>Pull the bar down towards your upper chest while squeezing your shoulder blades together.</li>
+                    <li>Slowly return the bar to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>For pull-ups, avoid swinging or using momentum.</li>
+                    <li>For lat pulldowns, keep your torso upright and avoid leaning back excessively.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(13, 'Pull-Ups or Lat Pulldowns')">Update PR</button>
+            </div>
+
+            <div class="exercise">
+                <h2>Bent Over Rows</h2>
+                <p><strong>ID:</strong> 14</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='BentOverRows.gif') }}" alt="Bent Over Rows" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='BentOverRows1.gif') }}" alt="Bent Over Rows" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Middle back, lats, traps, biceps.</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Stand with your feet shoulder-width apart, holding a barbell with an overhand grip.</li>
+                    <li>Bend at your hips and knees, keeping your back straight and torso almost parallel to the floor.</li>
+                    <li>Let the barbell hang at arm's length.</li>
+                    <li>Pull the barbell towards your lower chest or upper abdomen.</li>
+                    <li>Squeeze your shoulder blades together at the top of the movement.</li>
+                    <li>Lower the barbell back to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Maintain a neutral spine throughout the movement.</li>
+                    <li>Avoid using your arms to lift; focus on pulling with your back muscles.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(14, 'Bent Over Rows')">Update PR</button>
+            </div>
+
+            <div class="exercise">
+                <h2>Seated Rows</h2>
+                <p><strong>ID:</strong> 15</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='SeatedRows.gif') }}" alt="Seated Rows" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='SeatedRows1.gif') }}" alt="Seated Rows" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Middle back, lats, traps, biceps.</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Sit at a seated row machine and place your feet on the platform.</li>
+                    <li>Grab the handle with an overhand or neutral grip.</li>
+                    <li>Sit upright with your back straight and core engaged.</li>
+                    <li>Pull the handle towards your lower chest, squeezing your shoulder blades together.</li>
+                    <li>Slowly return to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                 <ul>
+                    <li>Avoid leaning back or using momentum.</li>
+                    <li>Keep your chest up and shoulders back.</li>
+                </ul>
+                    <button class="btn" onclick="updatePR(15, 'Seated Rows')">Update PR</button>
+                </div>
+
+                <div class="exercise">
+                    <h2>Face Pulls</h2>
+                    <p><strong>ID:</strong> 16</p>
+                    <div class="gif-container">
+                        <img src="{{ url_for('static', filename='FacePulles.gif') }}" alt="Face Pulls" class="exercise-gif">
+                        <img src="{{ url_for('static', filename='FacePulles1.gif') }}" alt="Face Pulls" class="exercise-gif">
+                    </div>
+                    <p><strong>Muscles Worked:</strong> Rear deltoids, traps, rhomboids.</p>
+                    <p><strong>Instructions:</strong></p>
+                    <ol>
+                        <li>Attach a rope handle to a high pulley on a cable machine.</li>
+                        <li>Grab the ends of the rope with an overhand grip, palms facing each other.</li>
+                        <li>Step back to create tension in the cable, and stand with your feet shoulder-width apart.</li>
+                        <li>Pull the rope towards your face, keeping your elbows high and flaring them out.</li>
+                        <li>Squeeze your shoulder blades together at the end of the movement.</li>
+                        <li>Slowly return to the starting position.</li>
+                        <li>Repeat for the desired number of repetitions.</li>
+                    </ol>
+                    <p><strong>Tips:</strong></p>
+                    <ul>
+                        <li>Maintain a neutral spine and avoid arching your back.</li>
+                        <li>Focus on the contraction of your rear delts and upper back muscles.</li>
+                    </ul>
+                    <button class="btn" onclick="updatePR(16, 'Face Pulls')">Update PR</button>
+                </div>
+            </section>
+        </main>
+        
+        <script>
+            function updatePR(exerciseID, exerciseName) {
+                // Redirect to the update page with parameters
+                window.location.href = `{{ url_for('update_pr') }}?id=${exerciseID}&name=${exerciseName}`;
+                //toggle icon navbar
+let menuIcon = document.querySelector('#menu-icon');
+let navbar= document.querySelector('.navbar');
+
+menuIcon.onclick= () => {
+    menuIcon.classList.toggle('bx-x');
+    navbar.classList.toggle('active');
+}
+// scroll sections
+let sections = document.querySelectorAll('sections');
+let navLinks = document.querySelectorAll('header nav a');
+
+window.onscroll = () => {
+    sections.forEach(sec => {
+        let top = window.scrollY;
+        let offset=sec.offsetTop=100;
+        let height=sec.offsetHeight;
+        let id=sec.getAttribute('');
+
+        if(top >= offset && top < offset + height) {
+            //active navbar links
+            navLinks.forEach(links => {
+                links.classList.remove('active');
+                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+            });
+        }
+    })
+}
+
+//scroll sections
+window.onscroll = () => {
+    //sticky header
+    let header = document.querySelector('header');
+    header.classList.toggle('sticky',window.scrollY > 100);
+
+    menuIcon.classList.remove('bx-x');
+    navbar.classList.remove('active');
+}
+
+
+ScrollReveal({
+    reset: true,
+    distance: '80px',
+    duration: 2000,
+    delay: 200
+});
+ScrollReveal().reveal('.home-content, .heading',{origin:'top'});
+ScrollReveal().reveal('.home-img img, .services-container, portfolio-box, .contact form', {origin: 'bottom'});
+ScrollReveal().reveal('.home-content h1, .about-img img',{origin:'left'});
+ScrollReveal().reveal('.home-content h3, .home-content p .about-content',{origin:'right'});
+            }
+        </script>
+    </body>
+    </html>        

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles-ex.css') }}">
+    <script src="{{ url_for('static', filename='scripts-ex.js') }}"></script>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">A<span>Z</span></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('bmi_input') }}">BMI</a>
+            <a href="{{ url_for('diet') }}">Diet</a>
+            <span class="active-nav"></span>
+        </nav>
+    </header>
+    <main>
+        <!-- On Hover or Click, print muscle group name -->
+        <section class="fly text-center glass-background">
+            <h2>Select a muscle to Workout</h2>
+            <h1>
+                <span></span><span id="body-part-print"></span>
+            </h1>
+        </section>
+        
+        <!-- SVG images come here -->
+        <section id="body-section">
+            <!-- BODY - FRONT -->
+            <div class="fig-wrapper">
+                <figure class="fig fig-front">
+                    <!-- SVG comes here -->
+                    <object id="svg-front" class="svg" data="{{ url_for('static', filename='body-front.svg') }}" type="image/svg+xml"></object>
+                    <!-- SVG front END -->
+                    <figcaption class="text-center">Body Front</figcaption>
+                </figure>
+            </div>
+            <!-- BODY - BACK -->
+            <div class="fig-wrapper">
+                <figure class="fig fig-back">
+                    <!-- SVG comes here -->
+                    <object id="svg-back" class="svg" data="{{ url_for('static', filename='body-back.svg') }}" type="image/svg+xml"></object>
+                    <!-- SVG back END -->
+                    <figcaption class="text-center">Body Back</figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+</body>
+<script>
+    function navigateToPage(pageUrl) {
+        window.location.href = pageUrl;
+    }
+</script>
+</script>
+</html>

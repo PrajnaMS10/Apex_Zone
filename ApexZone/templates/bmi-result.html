@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            scroll-behavior: smooth;
+            font-family: 'Lato', sans-serif;
+        }
+
+        :root {
+            --bg-color: rgb(0, 0, 0);
+            --text-color: white;
+            --main-color: rgb(188, 0, 0);
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+        .header{
+            position: fixed;
+            top:0;
+            left: 0;
+            width:100%;
+            padding: 2rem 9%;
+            background:transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: .3s;
+        
+        }
+        .header.sticky {
+          background: var(--bg-color);
+        }
+        .logo{
+            font-size: 2.5rem;
+            color:var(--text-color);
+            font-weight: 600;
+        }
+        span{
+            color: var(--main-color);
+        }
+        .navbar a{
+            font-size: 1.7rem;
+            color:var(--text-color);
+            font-weight: 500;
+            margin-left: 3.5rem ;
+            transition: .3s;
+        }
+        .navbar a:hover{
+            color: var(--main-color);
+        }
+        .navbar a.active{
+            color:var(--main-color);
+        }
+
+        .result_container {
+            position: absolute;
+            max-width: 400px; /* Increased max-width */
+            width: 80%; /* Increased width */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.2);
+            z-index: 101;
+            background: #fff;
+            color: black;
+            padding: 35px; /* Increased padding */
+            border-radius: 12px;
+            text-align: center;
+        }        
+
+        .result_container h2 {
+            color: black;
+            font-size: 22px;
+        }
+
+        .result_container p {
+            color: black;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .button-container a {
+            padding: 15px 30px; /* Increased padding for larger button size */
+            font-size: 20px; /* Increased font size */
+            background-color: rgb(188, 0, 0);
+            color: white;
+            border-radius: 10px;
+            border: 2px solid rgb(188, 0, 0);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            text-align: center;
+            margin: 5px; /* Ensure space between rows */
+        }
+        
+
+        .button-container a:hover {
+            background-color: white;
+            color: rgb(188, 0, 0);
+            border-color: rgb(188, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">A<span>Z</span></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}">Home</a>
+            <span class="active-nav"></span>
+        </nav>
+    </header>
+    <div class="result_container">
+        <h2>Your BMI Result</h2>
+            <p>Your BMI is: 19.7359764922591</p>
+            <p>Your BMI category is: Normal weight - FIT</p>
+        <div class="button-container">
+            <a href="{{ url_for('exercise') }}">Exercise</a>
+            <a href="{{ url_for('diet') }}">Diet</a>
+            <a href="{{ url_for('cut') }}">Cut</a>
+            <a href="{{ url_for('bulk') }}">Bulk</a>
+        </div>
+    </div>
+</body>
+</html>

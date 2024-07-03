@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulk</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">A<span>Z</span></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('bmi_input') }}">BMI</a>
+            <a href="{{ url_for('exercise') }}">Exercises</a>
+            <a href="{{ url_for('diet') }}">Diet</a>
+            <span class="active-nav"></span>
+        </nav>
+    </header>
+    <section class="apexzone" id="apexzone">
+        <h2 class="heading"><span>CUT</span></h2>
+
+        <div class="apexzone-row">
+            <div class="apexzone-column">
+                <h3 class="title">EXERCISES</h3>
+                <div class="apexzone-box">
+                    <div class="apexzone-content">
+                        <div class="content">
+                            <p><h3><span>MON :</span> Back</h3>  </p>
+                            <p><h3><span>TUE  :</span> Chest</h3>  </p>
+                            <p><h3><span>WED :</span> Abs </h3></p>
+                            <p><h3><span>THU  :</span> Arms (biceps & triceps) </h3></p>
+                            <p><h3><span>FRI  :</span> Shoulders </h3></p>
+                            <p><h3><span>SAT  :</span> Legs & Abs </h3></p>
+                            <p><h3><span>SUN :</span> Rest </h3></p>
+                            <p>Daily cardio : 30mins(e.g., running, cycling, or swimming)</p>
+                            <p>Cool Down : Stretching for 5-10 minute</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="apexzone-column">
+                <h3 class="title"> DIET </h3>
+                <div class="apexzone-box">
+                    <div class="apexzone-content">
+                        <div class="content"> 
+                            <h3>PER DAY </h3>                   
+                            <p><span>Calories Burnt : </span>2500-3000 cal</p>
+                            <p><span>Calories Intake : </span>1700-2000 cal</p>
+                            <p><span>Protein Intake : </span>1.6 to 2.2 grams per kilogram of body weight</p>
+                            <p><span>Water Intake : </span>3.7 liters (125 ounces) per day for men and 2.7 liters per day for women</p>
+                            <p><span>Fiber Intake : </span>25-30 grams</p>
+                            <p><span>Vitamins & Minerals : </span> variety of fruits, vegetables, lean proteins, whole grains, and healthy fats.</p>
+                            <p></p>
+                            <p></p>
+                            <p><span>Source:</span>Lean meats, poultry, fish, eggs, dairy products,avocados, nuts, seeds, olive oil, fatty fish, coconut oil , whole grains, fruits, vegetables, legumes, starchy vegetables.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="script.js"> </script>
+</body>
+</html>

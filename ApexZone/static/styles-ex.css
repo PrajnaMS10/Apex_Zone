@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Lato', sans-serif;
+}
+
+:root {
+    --bg-color: rgb(0, 0, 0);
+    --second-bg-color: rgb(133, 0, 0);
+    --text-color: white;
+    --main-color: rgb(255, 0, 0);
+}
+
+html{
+    font-size: 62.5% ;
+}
+body{
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+.header{
+    position: fixed;
+    top:0;
+    left: 0;
+    width:100%;
+    padding: 2rem 9%;
+    background:transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: .3s;
+
+}
+.header.sticky {
+  background: var(--bg-color);
+}
+.logo{
+    font-size: 2.5rem;
+    color:var(--text-color);
+    font-weight: 600;
+}
+.navbar a{
+    font-size: 1.7rem;
+    color:var(--text-color);
+    font-weight: 500;
+    margin-left: 3.5rem ;
+    transition: .3s;
+}
+.navbar a:hover{
+    color: var(--main-color);
+}
+.navbar a.active{
+    color:var(--main-color);
+}
+span{
+    color: var(--main-color);
+}
+
+.text-center {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.text-cente {
+    padding-left: 42%;
+    color: orangered;
+    font-size: 4rem; /* Increase font size */
+    font-weight: bolder;
+    text-shadow: white;
+}
+
+@media screen and (min-width: 768px) {
+    main {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-around; /* Center the SVG images and box */
+    }
+    .fly {
+        z-index: 10;
+        min-width: 500px; /* Increase the width */
+        max-width: 800px; /* Set a maximum width */
+        background-color: white; /* Set background color to white */
+        color: black; /* Set text color to black */
+        border-radius: 10px;
+        padding: 40px; /* Increase padding */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.glass-background {
+    background-color: white; /* Set background color to white */
+    color: black; /* Set text color to black */
+    border-radius: 10px;
+    padding: 40px; /* Increase padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#body-section {
+    display: flex;
+    justify-content: space-between; /* Align SVG images left and right */
+    align-items: center;
+    gap: 2rem; /* Add space between figures */
+    margin-top: 2rem; /* Add space at the top */
+}
+
+.fig-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.fig {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.svg {
+    height: 75vmin;
+}
+
+#body-part-print {
+    color: rgb(188, 0, 0); /* Set the color to red */
+    font-size: 4rem; /* Adjust font size */
+    font-weight: bold; /* Make the text bold */
+}

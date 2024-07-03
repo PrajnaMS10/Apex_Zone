@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoulders and Abs Exercises</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles-ee.css') }}">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 5rem;
+            text-align: center;
+        }
+
+        .exercise-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .exercise {
+            background-color: rgb(75, 3, 3);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+
+        .exercise h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise .gif-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise .gif-container img {
+            display: block;
+            width: 50%;
+            max-width: 100%;
+            border-radius: 1rem;
+        }
+
+        .exercise p {
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .exercise ol {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .exercise ul {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .exercise ol li {
+            margin-bottom: 2rem;
+        }
+
+        .exercise ol,
+        .exercise ul {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .exercise li {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise .btn {
+    background-color: rgb(188, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 1rem 3rem;
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.exercise .btn:hover {
+    background-color: transparent;
+    color: rgb(188, 0, 0);
+    border: 2px solid rgb(188, 0, 0); /* Add a red border on hover */
+}
+
+
+        @media (max-width: 768px) {
+            .exercise .gif-container {
+                flex-direction: column;
+            }
+
+            .exercise .gif-container img {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">A<span>Z</span></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('exercise') }}">Exercise</a>
+            <a href="{{ url_for('diet') }}">Diet</a>
+            <a href="{{ url_for('display_tables') }}">Personal Record</a>
+            <span class="active-nav"></span>
+        </nav>
+    </header>
+    <main>
+        <section class="exercise-section">
+            <h1>Shoulders and Abs Exercises</h1>
+
+            <div class="exercise">
+                <h2>Overhead Press</h2>
+                <p><strong>ID:</strong> 17</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='OverheadPress.gif') }}" alt="Overhead Press 1" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='OverheadPress1.gif') }}" alt="Overhead Press 2" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Shoulders (deltoids), triceps, upper chest.</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Stand with your feet shoulder-width apart, holding a barbell at shoulder height with an overhand grip.</li>
+                    <li>Engage your core and keep your chest up.</li>
+                    <li>Press the barbell overhead until your arms are fully extended.</li>
+                    <li>Slowly lower the barbell back to shoulder height.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Keep the barbell close to your body throughout the lift.</li>
+                    <li>Avoid arching your back; keep your core tight.</li>
+                    <li>Keep your elbows slightly in front of your body during the press.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(17, 'Overhead Press')">Update PR</button>
+            </div>
+
+            <div class="exercise">
+                <h2>Lateral Raises</h2>
+                <p><strong>ID:</strong> 18</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='LateralRaises.gif') }}" alt="Lateral Raises 1" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='LateralRaises1.gif') }}" alt="Lateral Raises 2" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Shoulders (lateral deltoids).</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Stand with your feet shoulder-width apart, holding a dumbbell in each hand at your sides.</li>
+                    <li>Keep a slight bend in your elbows and raise the dumbbells out to the sides until they are at shoulder height.</li>
+                    <li>Lower the dumbbells back to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Keep your movements slow and controlled.</li>
+                    <li>Avoid using momentum or swinging the weights.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(18, 'Lateral Raises')">Update PR</button>
+            </div>
+
+            <div class="exercise">
+                <h2>Front Raises</h2>
+                <p><strong>ID:</strong> 19</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='FrontRaises1.gif') }}" alt="Front Raises 1" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='FrontRaises.gif') }}" alt="Front Raises 2" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Shoulders (anterior deltoids).</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Stand with your feet shoulder-width apart, holding a dumbbell in each hand in front of your thighs.</li>
+                    <li>Keeping your arms straight, raise the dumbbells in front of you to shoulder height.</li>
+                    <li>Lower the dumbbells back to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Maintain a slight bend in your elbows.</li>
+                    <li>Perform the movement slowly and avoid swinging.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(19, 'Front Raises')">Update PR</button>
+            </div>
+
+            <div class="exercise">
+                <h2>Reverse Flyes</h2>
+                <p><strong>ID:</strong> 20</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='ReverseFlys1.gif') }}" alt="Reverse Flys 1" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='ReverseFlys.gif') }}" alt="Reverse Flys 2" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Rear deltoids, upper back (rhomboids, traps).</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Stand with your feet shoulder-width apart, holding a dumbbell in each hand.</li>
+                    <li>Bend at your hips and knees, keeping your back straight and torso almost parallel to the floor.</li>
+                    <li>Let the dumbbells hang down below you with your palms facing each other.</li>
+                    <li>Raise the dumbbells out to the sides until they are in line with your shoulders.</li>
+                    <li>Lower the dumbbells back to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Avoid swinging the weights; use controlled movements.</li>
+                    <li>Squeeze your shoulder blades together at the top of the movement.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(20, 'Reverse Flyes')">Update PR</button>
+            </div>
+
+            <div class="exercise">
+                <h2>Plank</h2>
+                <p><strong>ID:</strong> 21</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='Plank1.gif') }}" alt="Plank 1" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='Plank.gif') }}" alt="Plank 2" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Core (abdominals, obliques), shoulders, back.</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Start in a forearm plank position with your elbows directly under your shoulders and your body in a straight line from head to heels.</li>
+                    <li>Engage your core and hold the position, avoiding letting your hips sag or rise.</li>
+                    <li>Maintain the position for as long as you can with proper form.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                <li>Keep your neck in line with your spine by looking at a spot on the floor.</li>
+                <li>Breathe steadily and avoid holding your breath.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(21, 'Plank')">Update PR</button>
+                </div>
+                <div class="exercise">
+                    <h2>Hanging Leg Raises</h2>
+                    <p><strong>ID:</strong> 22</p>
+                    <div class="gif-container">
+                        <img src="{{ url_for('static', filename='HangingLegRaises1.gif') }}" alt="Hanging Leg Raises 1" class="exercise-gif">
+                        <img src="{{ url_for('static', filename='HangingLegRaises.gif') }}" alt="Hanging Leg Raises 2" class="exercise-gif">
+                    </div>
+                    <p><strong>Muscles Worked:</strong> Lower abdominals, hip flexors.</p>
+                    <p><strong>Instructions:</strong></p>
+                    <ol>
+                        <li>Hang from a pull-up bar with an overhand grip and your arms fully extended.</li>
+                        <li>Keep your legs straight and together, and raise them to a 90-degree angle with your torso.</li>
+                        <li>Slowly lower your legs back to the starting position.</li>
+                        <li>Repeat for the desired number of repetitions.</li>
+                    </ol>
+                    <p><strong>Tips:</strong></p>
+                    <ul>
+                        <li>Avoid swinging your body; use your core muscles to lift your legs.</li>
+                        <li>Start with bent knees if you find the exercise too difficult initially.</li>
+                    </ul>
+                    <button class="btn" onclick="updatePR(22, 'Hanging Leg Raises')">Update PR</button>
+                </div>
+        
+                <div class="exercise">
+                    <h2>Russian Twists</h2>
+                    <p><strong>ID:</strong> 23</p>
+                    <div class="gif-container">
+                        <img src="{{ url_for('static', filename='RussianTwists1.gif') }}" alt="Russian Twists 1" class="exercise-gif">
+                        <img src="{{ url_for('static', filename='RussianTwists.gif') }}" alt="Russian Twists 2" class="exercise-gif">
+                    </div>
+                    <p><strong>Muscles Worked:</strong> Obliques, abdominals.</p>
+                    <p><strong>Instructions:</strong></p>
+                    <ol>
+                        <li>Sit on the floor with your knees bent and feet flat.</li>
+                        <li>Lean back slightly, keeping your back straight, and lift your feet off the ground if you can.</li>
+                        <li>Hold a weight (like a dumbbell or medicine ball) with both hands in front of your chest.</li>
+                        <li>Twist your torso to the right, bringing the weight towards the floor beside your hip.</li>
+                        <li>Twist back to the left, bringing the weight towards the floor beside your other hip.</li>
+                        <li>Repeat for the desired number of repetitions on each side.</li>
+                    </ol>
+                    <p><strong>Tips:</strong></p>
+                    <ul>
+                        <li>Keep your movements controlled and avoid using momentum.</li>
+                        <li>Focus on rotating your torso rather than just moving your arms.</li>
+                    </ul>
+                    <button class="btn" onclick="updatePR(23, 'Russian Twists')">Update PR</button>
+                </div>
+        
+            </section>
+        </main>
+
+        <script>
+            function updatePR(exerciseID, exerciseName) {
+                // Redirect to the update page with parameters
+                window.location.href = `{{ url_for('update_pr') }}?id=${exerciseID}&name=${exerciseName}`;
+            }
+            //toggle icon navbar
+let menuIcon = document.querySelector('#menu-icon');
+let navbar= document.querySelector('.navbar');
+
+menuIcon.onclick= () => {
+    menuIcon.classList.toggle('bx-x');
+    navbar.classList.toggle('active');
+}
+// scroll sections
+let sections = document.querySelectorAll('sections');
+let navLinks = document.querySelectorAll('header nav a');
+
+window.onscroll = () => {
+    sections.forEach(sec => {
+        let top = window.scrollY;
+        let offset=sec.offsetTop=100;
+        let height=sec.offsetHeight;
+        let id=sec.getAttribute('');
+
+        if(top >= offset && top < offset + height) {
+            //active navbar links
+            navLinks.forEach(links => {
+                links.classList.remove('active');
+                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+            });
+        }
+    })
+}
+
+//scroll sections
+window.onscroll = () => {
+    //sticky header
+    let header = document.querySelector('header');
+    header.classList.toggle('sticky',window.scrollY > 100);
+
+    menuIcon.classList.remove('bx-x');
+    navbar.classList.remove('active');
+}
+
+
+ScrollReveal({
+    reset: true,
+    distance: '80px',
+    duration: 2000,
+    delay: 200
+});
+ScrollReveal().reveal('.home-content, .heading',{origin:'top'});
+ScrollReveal().reveal('.home-img img, .services-container, portfolio-box, .contact form', {origin: 'bottom'});
+ScrollReveal().reveal('.home-content h1, .about-img img',{origin:'left'});
+ScrollReveal().reveal('.home-content h3, .home-content p .about-content',{origin:'right'});
+        </script>
+    </body>
+</html>        

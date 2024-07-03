@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Lato', sans-serif;
+}
+
+:root {
+    --bg-color: rgb(0, 0, 0);
+    --second-bg-color: rgb(75, 3, 3);
+    --text-color: white;
+    --main-color: rgb(188, 0, 0);
+}
+
+html {
+    font-size: 62.5%;
+}
+
+main {
+    padding: 2rem;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+span{
+    color: red;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: .3s;
+}
+
+.header.sticky {
+    background: var(--bg-color);
+}
+
+h1 {
+    font-size: 5rem;
+    text-align: center;
+    position: relative;
+    margin-bottom: 2rem;
+    color: white; /* Ensure the title is white for the reflection effect */
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -0.25em; /* Adjust this value to control the reflection distance */
+    left: 0;
+    right: 0;
+    height: 0.1em; /* Adjust this value to control the reflection height */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    z-index: 1; /* Ensure the reflection is below the text */
+}
+
+h1::before {
+    content: '';
+    position: absolute;
+    bottom: -0.25em; /* Adjust this value to control the reflection distance */
+    left: 0;
+    right: 0;
+    height: 0.05em; /* Adjust this value to control the reflection height */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+    z-index: 2; /* Ensure the shadow is above the reflection */
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.navbar a {
+    font-size: 1.7rem;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-left: 3.5rem;
+    transition: .3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+}
+
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--text-color);
+    cursor: pointer;
+    display: none;
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+}
+
+/* Exercise Sections */
+.exercise {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    background: var(--second-bg-color);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.exercise h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.gif-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.exercise img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: 1rem;
+}
+
+.exercise p {
+    font-size: 3rem;
+    line-height: 2;
+    margin-bottom: 1rem;
+}
+
+.exercise ol {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.exercise ol li {
+    margin-bottom: 0.5rem;
+}
+
+.exercise ol,
+.exercise ul {
+    font-size: 2rem; /* Adjust the font size as needed */
+    margin-bottom: 3rem; /* Adjust margin bottom as needed */
+}
+
+.exercise li {
+    font-size: 2rem; /* Adjust the font size as needed */
+    margin-bottom: 1rem; /* Adjust margin bottom as needed */
+}
+
+.exercise .heading {
+    font-size: 5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.exercise .content {
+    text-align: center;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.exercise .btn {
+    background-color: rgb(188, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 1rem 3rem;
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.exercise .btn:hover {
+    background-color: transparent;
+    color: rgb(188, 0, 0);
+}
+
+.exercise .exercise-gif {
+    width: 100%; /* Ensure the GIFs occupy the full width of their container */
+    max-width: 100%; /* Ensure the GIFs do not exceed their original width */
+    display: block;
+    margin: 2rem auto; /* Center the GIFs horizontally */
+}
+
+.exercise h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    box-shadow: 5px 5px 5px rgba(12, 0, 0, 0.711);
+}
+
+@keyframes slideInFromBottom {
+    from {
+            transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .slide-in {
+            animation: slideInFromBottom 1s ease-out forwards;
+        }
+        
+        
+        
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+.slide-in {
+    animation: slideInFromBottom 1s ease-out forwards;
+}

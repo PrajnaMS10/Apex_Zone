@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEXZONE</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">A<span>Z</span></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <nav class="navbar">
+            <a href="/">Home</a>
+            <a href="/signup">Signup</a>
+            <span class="active-nav"></span>
+        </nav>
+    </header>
+
+    <div class="form_container">
+        <div class="form login_form">
+            <form action="{{ url_for('login') }}" method="POST">
+                <h2>Login</h2>
+                <div class="input_box">
+                    <input type="text" name="username" placeholder="User name" required/>
+                    <i class='bx bxs-user calendar'></i>
+                </div>
+                <div class="input_box">
+                    <input type="password" name="password" placeholder="Enter your password" required/>
+                    <i class="uil uil-lock password"></i>
+                    <i class="uil uil-eye-slash pw_hide"></i>
+                </div>
+                <button class="button">Login Now</button>
+
+                <div class="login_signup">
+                    Don't have an account? <a href="/signup" id="signup">Signup</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legs Exercises</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles-ee.css') }}">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 5rem;
+            text-align: center;
+        }
+
+        .exercise-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .exercise {
+            background-color: rgb(75, 3, 3);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+
+        .exercise h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise .gif-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise .gif-container img {
+            display: block;
+            width: 50%;
+            max-width: 100%;
+            border-radius: 1rem;
+        }
+
+        .exercise p {
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .exercise ol {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .exercise ul {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .exercise ol li {
+            margin-bottom: 2rem;
+        }
+
+        .exercise ol,
+        .exercise ul {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .exercise li {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise .btn {
+    background-color: rgb(188, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 1rem 3rem;
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.exercise .btn:hover {
+    background-color: transparent;
+    color: rgb(188, 0, 0);
+    border: 2px solid rgb(188, 0, 0); /* Add a red border on hover */
+}
+
+
+        @media (max-width: 768px) {
+            .exercise .gif-container {
+                flex-direction: column;
+            }
+
+            .exercise .gif-container img {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">A<span>Z</span></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('exercise') }}">Exercise</a>
+            <a href="{{ url_for('diet') }}">Diet</a>
+            <a href="{{ url_for('display_tables') }}">Personal Record</a>
+            <span class="active-nav"></span>
+        </nav>
+    </header>
+    <main>
+        <section class="exercise-section">
+            <h1>Legs Exercises</h1>
+
+            <div class="exercise">
+                <h2>Squats</h2>
+                <p><strong>ID:</strong> 1</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='Squats1.gif') }}" alt="Squats" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='Squats.gif') }}" alt="Squats" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Quadriceps, hamstrings, glutes, lower back, calves.</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Stand with your feet shoulder-width apart.</li>
+                    <li>Keep your chest up, shoulders back, and core engaged.</li>
+                    <li>Lower your body by bending your knees and hips as if sitting back into a chair.</li>
+                    <li>Go down until your thighs are parallel to the floor.</li>
+                    <li>Push through your heels to return to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Keep your knees in line with your toes.</li>
+                    <li>Avoid letting your knees cave inward or move forward past your toes.</li>
+                    <li>Maintain a neutral spine throughout the movement.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(1, 'Squats')">Update PR</button>
+            </div>
+
+            <div class="exercise">
+                <h2>Leg Press</h2>
+                <p><strong>ID:</strong> 2</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='LegPress1.gif') }}" alt="Leg Press" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='LegPress.gif') }}" alt="Leg Press" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Quadriceps, hamstrings, glutes.</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Sit on the leg press machine and place your feet shoulder-width apart on the platform.</li>
+                    <li>Adjust the seat and backrest if necessary to ensure proper alignment.</li>
+                    <li>Press the platform away to release the safety latches.</li>
+                    <li>Lower the platform by bending your knees until they are at a 90-degree angle.</li>
+                    <li>Push the platform back up to the starting position without locking your knees.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Keep your feet flat on the platform and your back against the seat.</li>
+                    <li>Avoid lifting your heels or letting your knees collapse inward.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(2, 'Leg Press')">Update PR</button>
+            </div>
+
+            <div class="exercise">
+                <h2>Romanian Deadlifts</h2>
+                <p><strong>ID:</strong> 3</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='RomanianDeadlifts1.gif') }}" alt="Romanian Deadlifts" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='RomanianDeadlifts.gif') }}" alt="Romanian Deadlifts" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Hamstrings, glutes, lower back.</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Stand with your feet hip-width apart and hold a barbell with an overhand grip.</li>
+                    <li>Keep your knees slightly bent and your back straight.</li>
+                    <li>Hinge at your hips, pushing them back as you lower the barbell along the front of your legs.</li>
+                    <li>Lower the barbell until you feel a stretch in your hamstrings, typically just below the knees.</li>
+                    <li>Return to the starting position by driving your hips forward and standing up straight.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Maintain a neutral spine throughout the movement.</li>
+                    <li>Avoid rounding your back.</li>
+                    <li>Keep the barbell close to your body.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(3, 'Romanian Deadlifts')">Update PR</button>
+            </div>
+
+            <div class="exercise">
+                <h2>Leg Curls</h2>
+                <p><strong>ID:</strong> 4</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='LegCurls1.gif') }}" alt="Leg Curls" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='LegCurls.gif') }}" alt="Leg Curls" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Hamstrings.</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Lie face down on the leg curl machine with your legs fully extended and the pad just above your ankles.</li>
+                    <li>Grab the handles for support and keep your hips down.</li>
+                    <li>Curl your legs up as far as possible by bending your knees.</li>
+                    <li>Slowly lower the weight back to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Use a controlled movement to avoid momentum.</li>
+                    <li>Focus on squeezing your hamstrings at the top of the movement.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(4, 'Leg Curls')">Update PR</button>
+            </div>
+
+            <div class="exercise">
+                <h2>Calf Raises</h2>
+                <p><strong>ID:</strong> 5</p>
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='CalfRaises1.gif') }}" alt="Calf Raises" class="exercise-gif">
+                    <img src="{{ url_for('static', filename='CalfRaises.gif') }}" alt="Calf Raises" class="exercise-gif">
+                </div>
+                <p><strong>Muscles Worked:</strong> Calves (gastrocnemius and soleus).</p>
+                <p><strong>Instructions:</strong></p>
+                <ol>
+                    <li>Stand with the balls of your feet on the edge of a step or a raised platform.</li>
+                    <li>Lower your heels below the step to feel a stretch in your calves.</li>
+                    <li>Push through the balls of your feet to raise your heels as high as possible.</li>
+                    <li>Slowly lower back to the starting position.</li>
+                    <li>Repeat for the desired number of repetitions.</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Keep your knees straight but not locked.</li>
+                    <li>Use a full range of motion to maximize effectiveness.</li>
+                    <li>Maintain a steady pace without bouncing.</li>
+                </ul>
+                <button class="btn" onclick="updatePR(5, 'Calf Raises')">Update PR</button>
+            </div>
+
+        </section>
+    </main>
+    <script>
+        function updatePR(exerciseID, exerciseName) {
+            // Redirect to the update page with parameters
+            window.location.href = `{{ url_for('update_pr') }}?id=${exerciseID}&name=${exerciseName}`;
+        }
+        //toggle icon navbar
+let menuIcon = document.querySelector('#menu-icon');
+let navbar= document.querySelector('.navbar');
+
+menuIcon.onclick= () => {
+    menuIcon.classList.toggle('bx-x');
+    navbar.classList.toggle('active');
+}
+// scroll sections
+let sections = document.querySelectorAll('sections');
+let navLinks = document.querySelectorAll('header nav a');
+
+window.onscroll = () => {
+    sections.forEach(sec => {
+        let top = window.scrollY;
+        let offset=sec.offsetTop=100;
+        let height=sec.offsetHeight;
+        let id=sec.getAttribute('');
+
+        if(top >= offset && top < offset + height) {
+            //active navbar links
+            navLinks.forEach(links => {
+                links.classList.remove('active');
+                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+            });
+        }
+    })
+}
+
+//scroll sections
+window.onscroll = () => {
+    //sticky header
+    let header = document.querySelector('header');
+    header.classList.toggle('sticky',window.scrollY > 100);
+
+    menuIcon.classList.remove('bx-x');
+    navbar.classList.remove('active');
+}
+
+
+ScrollReveal({
+    reset: true,
+    distance: '80px',
+    duration: 2000,
+    delay: 200
+});
+ScrollReveal().reveal('.home-content, .heading',{origin:'top'});
+ScrollReveal().reveal('.home-img img, .services-container, portfolio-box, .contact form', {origin: 'bottom'});
+ScrollReveal().reveal('.home-content h1, .about-img img',{origin:'left'});
+ScrollReveal().reveal('.home-content h3, .home-content p .about-content',{origin:'right'});
+    </script>
+
+</body>
+
+</html>

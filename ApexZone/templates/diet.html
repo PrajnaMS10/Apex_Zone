@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">A<span>Z</span></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('bmi_input') }}">BMI</a>
+            <a href="{{ url_for('exercise') }}">Exercises</a>
+            <span class="active-nav"></span>
+        </nav>
+    </header>
+    <main>
+        <section class="apexzone" id="apexzone">
+            <h2 class="heading">DIET<span>PLAN</span></h2>
+    
+            <div class="apexzone-row">
+                <div class="apexzone-column">
+                    <div class="apexzone-box">
+                        <div class="apexzone-content">
+                            <div class="content">
+                                <h3>CARBOHYDRATES</h3>
+                                <p>Whole Grains: Brown rice, whole grain bread, whole wheat pasta , barley .</p>
+                                <p>Legumes: Lentils, chickpeas, black beans, and kidney beans.</p>
+                                    <p>Vegetables: Sweet potatoes, carrots, beets, and winter squash.</p>
+                                    <p>Fruits: Bananas, apples, berries, and pears.</p>
+                                    <p>Dairy: Yogurt and milk (also provide protein and healthy fats).</p>
+                            </div>
+                        </div>
+    
+                        <div class="apexzone-content">
+                            <div class="content">
+                                <h3>FATS</h3>
+                                <p>Avocados: Rich in monounsaturated fats, vitamins, and minerals.</p>
+                                 <p>Nuts and Seeds: Almonds, walnuts, chia seeds, flaxseeds, and sunflower seeds provide healthy fats, protein, and fiber.</p>
+                                    <p>Nut Butters: Peanut butter, almond butter, and other nut butters are calorie-dense and nutrient-rich.</p>
+                                    <p>Oils: Olive oil, coconut oil, avocado oil, and flaxseed oil are great for cooking and adding to dishes.</p>
+                                    <p>Fatty Fish: Salmon, mackerel, sardines, and trout are high in omega-3 fatty acids.</p>
+                                    <p>Dairy Products: Full-fat yogurt, cheese, and milk provide both healthy fats and protein.</p>
+                                    <p>Dark Chocolate: Contains healthy fats and antioxidants.</p>
+                                    <p>Eggs: A good source of both protein and fat.</p>
+                            </div>
+                        </div>
+    
+                        <div class="apexzone-content">
+                            <div class="content">
+                                <h3>Others</h3>
+                                <p>FIBERS:Whole grains, fruits, vegetables, legumes, nuts, seeds.</p>
+                                <p>Probiotics and Prebiotics: Yogurt, kefir, sauerkraut, kimchi (probiotics); garlic, onions, bananas, asparagus (prebiotics).</p>
+                                <p>Antioxidants:Berries, dark chocolate, pecans, kidney beans.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="apexzone-column">
+                    <div class="apexzone-box">
+                        <div class="apexzone-content">
+                            <div class="content">
+                            
+                                <h3>PROTEIN</h3>
+                                <p>Lean Meats: Chicken, turkey, lean beef, and pork.</p>
+                                <p>Fish and Seafood: Salmon, tuna, mackerel, shrimp, and other seafood.</p>
+                                <p>Eggs: Whole eggs and egg whites.</p>
+                                <p>Dairy Products: Greek yogurt, cottage cheese, milk, and cheese.</p>
+                                <p>Legumes: Lentils, chickpeas, black beans, and kidney beans.</p>
+                                <p>Nuts and Seeds: Almonds, peanuts, chia seeds, and flaxseeds.</p>
+                                <p>Soy Products: Tofu, tempeh, and edamame.</p>
+                                <p>Protein Supplements: Whey protein, casein protein, and plant-based protein powders.</p>
+                            </div>
+                        </div>
+    
+                        <div class="apexzone-content">
+                            <div class="content">
+                                <h3>MINERALS</h3>
+                               <p>Calcium: Crucial for bone health.</p>
+                               <p>Sources: Dairy products, fortified plant milks, leafy greens, tofu.</p>
+                               <p>Iron: Important for oxygen transport and energy levels.</p>
+                               <p>Sources: Red meat, poultry, fish, lentils, beans, spinach, fortified cereals.</p>
+                               <p>Magnesium: Supports muscle and nerve function, energy production.</p>
+                               <p>Sources: Nuts, seeds, whole grains, leafy greens.</p>
+                               <p>Zinc: Necessary for immune function and wound healing.</p>
+                               <p>Sources: Meat, shellfish, legumes, seeds, nuts.</p>
+                            </div>
+                        </div>
+    
+                        <div class="apexzone-content">
+                            <div class="content">
+                                <h3>WATER</h3>
+                                <p> 2.7 to 3.7 liters per day</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="button-box">
+            <a href="{{ url_for('cut') }}" class="button">CUT</a>
+            <a href="{{ url_for('bulk') }}" class="button">BULK</a>
+        </div>
+    </main>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"> </script>
+</body>
+</html>
