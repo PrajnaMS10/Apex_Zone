@@ -1,10 +1,17 @@
 import os
-import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
+import psycopg2
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY', 'your_default_secret_key')  # Use environment variable for secret key
+from urllib.parse import urlparse
+def get_db_connection():
+    url = os.getenv("DB_URL")
+    return psycopg2.connect(url)
+
 
 # Database setup function
 @app.route('/')
@@ -24,32 +31,47 @@ def signup():
             return redirect(url_for('signup'))
 
         try:
-            with sqlite3.connect('exercise_database.db') as conn:
+            # Check if username already exists
+            with get_db_connection() as conn:
                 cursor = conn.cursor()
-                cursor.execute('SELECT * FROM users WHERE username = ?', (username,))
+                cursor.execute('SELECT * FROM users WHERE username = %s', (username,))
                 existing_user = cursor.fetchone()
                 if existing_user:
                     flash('Username already exists', 'error')
                     return redirect(url_for('signup'))
 
+            # Hash the password
             hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
             
-            with sqlite3.connect('exercise_database.db') as conn:
+            # Insert user and initialize PR
+            with get_db_connection() as conn:
                 cursor = conn.cursor()
-                cursor.execute('INSERT INTO users (username, DOB, gender, password) VALUES (?, ?, ?, ?)',
-                               (username, dob, gender, hashed_password))
+                cursor.execute(
+                    'INSERT INTO users (username, DOB, gender, password) VALUES (%s, %s, %s, %s) RETURNING id' ,
+                    (username, dob, gender, hashed_password)
+                )
+                user_id = cursor.fetchone()[0]
                 conn.commit()
-                user_id = cursor.lastrowid
-                for i in range(23):
-                    cursor.execute('INSERT INTO pr (exercise_id, user_id, weight, reps) VALUES (?, ?, ?, ?)',
-                                   (i+1, user_id, 0, 0))
-                conn.commit()
+
+                try:
+                    # Insert 23 default PR rows
+                    for i in range(23):
+                        cursor.execute(
+                            'INSERT INTO pr (user_id, exercise_id, weight, reps) VALUES (%s, %s, %s, %s)',
+                            (user_id, i + 1, 0, 0)
+                        )
+                    conn.commit()
+                except psycopg2.Error as pr_error:
+                    flash(f'User created, but failed to initialize PR records: {pr_error}', 'warning')
+                    return redirect(url_for('login'))
 
             flash('Registration successful', 'success')
             return redirect(url_for('login'))
-        except sqlite3.Error as e:
+
+        except psycopg2.Error as e:
             flash(f'Database error: {e}', 'error')
             return redirect(url_for('signup'))
+
     return render_template('signup.html')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -59,14 +81,14 @@ def login():
         password = request.form['password']
 
         try:
-            with sqlite3.connect('exercise_database.db') as conn:
+            with get_db_connection() as conn:
                 cursor = conn.cursor()
-                cursor.execute('SELECT * FROM users WHERE username = ?', (username,))
+                cursor.execute('SELECT * FROM users WHERE username = %s', (username,))
                 user = cursor.fetchone()
 
                 if user:
-                    if check_password_hash(user[2], password):# Updated index based on columns
-                        session['user_id'] = user[0]
+                    if check_password_hash(user[4], password):  # password is 5th column (index 4)
+                        session['user_id'] = user[0]  # user_id is 1st column (index 0)
                         flash('Login successful', 'success')
                         return redirect(url_for('redirect_after_login'))
                     else:
@@ -75,7 +97,7 @@ def login():
                 else:
                     flash('Username does not exist', 'error')
                     return redirect(url_for('signup'))
-        except sqlite3.Error as e:
+        except psycopg2.Error as e:
             flash(f'Database error: {e}', 'error')
             return redirect(url_for('login'))
     return render_template('login.html')
@@ -84,9 +106,9 @@ def login():
 def redirect_after_login():
     user_id = session.get('user_id')
     if user_id:
-        with sqlite3.connect('users.db') as conn:
+        with get_db_connection() as conn:
             cursor = conn.cursor()
-            cursor.execute('SELECT * FROM Bmi WHERE user_id = ?', (user_id,))
+            cursor.execute('SELECT * FROM BMI WHERE user_id = %s', (user_id,))
             bmi_data = cursor.fetchone()
             if bmi_data:
                 return redirect(url_for('exercise'))
@@ -107,9 +129,9 @@ def bmi_input():
             bmi = weight / (height / 100) ** 2
             user_id = session['user_id']
 
-            with sqlite3.connect('exercise_database.db') as conn:
+            with get_db_connection() as conn:
                 cursor = conn.cursor()
-                cursor.execute('INSERT INTO Bmi (user_id, height, weight, bmi) VALUES (?, ?, ?, ?)',
+                cursor.execute('INSERT INTO BMI (user_id, height, weight, bmi) VALUES (%s, %s, %s, %s)',
                                (user_id, height, weight, bmi))
                 conn.commit()
 
@@ -131,14 +153,14 @@ def bmi_result():
     bmi_category = None
     
     try:
-        with sqlite3.connect('exercise_database.db') as conn:
+        with get_db_connection() as conn:
             cursor = conn.cursor()
-            cursor.execute('SELECT height, weight, bmi FROM Bmi WHERE user_id = ? ORDER BY id DESC LIMIT 1', (user_id,))
+            cursor.execute('SELECT height, weight, bmi FROM BMI WHERE user_id = %s ORDER BY id DESC LIMIT 1', (user_id,))
             bmi_data = cursor.fetchone()
             print(f'Debug: Fetched bmi_data: {bmi_data}')
             
         if bmi_data:
-            latest_bmi = bmi_data[3]  # BMI is the third column, index 2
+            latest_bmi = bmi_data[2]  # bmi is 3rd column (index 2)
             print(f'Debug: Latest BMI: {latest_bmi}')
             if latest_bmi < 18.5:
                 bmi_category = 'Underweight - BULK'
@@ -149,10 +171,8 @@ def bmi_result():
             else:
                 bmi_category = 'Obesity - CUT'
             print(f'Debug: BMI Category: {bmi_category}')
-        
         return render_template('bmi-result.html', bmi_data=bmi_data, bmi_category=bmi_category)
-    
-    except sqlite3.Error as e:
+    except psycopg2.Error as e:
         flash(f'Database error: {e}', 'error')
         print(f'Debug: Database error: {e}')
         return redirect(url_for('bmi_input'))
@@ -203,10 +223,10 @@ def update_pr():
             weight = int(weight)
             reps = int(reps)
             
-            with sqlite3.connect('exercise_database.db') as conn:
+            with get_db_connection() as conn:
                 cursor = conn.cursor()
-                cursor.execute("UPDATE pr SET weight = ?, reps = ? WHERE exercise_id = ? AND user_id = ?", 
-                               (weight, reps, exercise_id, user_id))
+                cursor.execute("UPDATE pr SET weight = %s, reps = %s WHERE user_id = %s AND exercise_id = %s", 
+                               (weight, reps, user_id, exercise_id))
                 conn.commit()
                 
             if cursor.rowcount == 0:
@@ -221,18 +241,14 @@ def update_pr():
         except ValueError:
             flash('Invalid weight or reps value', 'error')
             return redirect(request.referrer)
-
-        except sqlite3.IntegrityError as e:
-            flash(f'Database integrity error: {e}', 'error')
-            return redirect(request.referrer)
-        except sqlite3.OperationalError as e:
-            flash(f'Database operational error: {e}', 'error')
-            return redirect(request.referrer)
-        except sqlite3.Error as e:
+        except psycopg2.Error as e:
             flash(f'Database error: {e}', 'error')
             return redirect(request.referrer)
         finally:
-            conn.close()
+            try:
+                conn.close()
+            except Exception:
+                pass
             
     else:
         exercise_id = request.args.get('id', '')
@@ -241,13 +257,13 @@ def update_pr():
     
 def get_exercises_by_muscle_group():
     user_id = session.get('user_id')
-    with sqlite3.connect('exercise_database.db') as conn:
+    with get_db_connection() as conn:
         cursor = conn.cursor()
         cursor.execute("""
                 SELECT exercises.name, pr.weight, pr.reps, exercises.muscle_group 
                 FROM pr 
                 JOIN exercises ON pr.exercise_id = exercises.id 
-                WHERE pr.user_id = ?
+                WHERE pr.user_id = %s
             """, (user_id,))
         exercises = cursor.fetchall()
      
